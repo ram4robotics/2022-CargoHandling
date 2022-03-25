@@ -30,10 +30,8 @@ public final class Constants {
     public final static class EncoderPorts {
         public final static int[] leftEnc = new int[]{0, 1};
         public final static int[] rightEnc = new int[]{2, 3};
-        public final static int[] intakeWheelsEnc = new int[]{10,11};
         public final static int[] intakeArmEnc = new int[]{4,5};
-        public final static int[] launcherEnc = new int[]{6,7};
-        public final static int[] climberEnc = new int[]{8,9};
+        public final static int[] climberEnc = new int[]{6,7};
     }
     public final class IntakeConstants {
         // max RPM = Maximum allowed speed for the intake wheels;
