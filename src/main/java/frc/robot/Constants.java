@@ -4,6 +4,8 @@
 
 package frc.robot;
 
+import edu.wpi.first.math.util.Units;
+
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
  * constants. This class should not be used for any other purpose. All constants should be declared
@@ -27,11 +29,31 @@ public final class Constants {
         public final static int climber1_ID = 31;
         public final static int climber2_ID = 32;
     }
-    public final static class EncoderPorts {
-        public final static int[] leftEnc = new int[]{0, 1};
-        public final static int[] rightEnc = new int[]{2, 3};
-        public final static int[] intakeArmEnc = new int[]{4,5};
-        public final static int[] climberEnc = new int[]{6,7};
+    public final static class EncoderConstants {
+        public final static int[] leftEnc_ports = new int[]{0, 1};
+        public final static boolean leftEnc_reversed = false;
+        public final static int[] rightEnc_ports = new int[]{2, 3};
+        public final static boolean rightEnc_reversed = true;
+        public final static int[] intakeArmEnc_ports = new int[]{4,5};
+        public final static boolean intakeArmEnc_reversed = false;
+        public final static int[] climberEnc_ports = new int[]{6,7};
+        public final static boolean climberEnc_reversed = false;
+        public final static double revThroughboreEnc_PPR = 2048;
+    }
+    public final static class DriveTrainConstants {
+        public final static double gearRatio = 10.71;
+        public final static double wheelDiameter = Units.inchesToMeters(6);
+        // ToDo: trackWidth in meters; to be calculated with sysID tool
+        public final static double trackWidth = Units.inchesToMeters(22);
+        public final static double kS = 6.0; // ToDo
+        public final static double kV = 1.0; // ToDo
+        public final static double kA = 0.0; // ToDo
+
+        // ToDo: Determine the Feedback constants from sysID tool
+        //  These are the values for the SparkMax motor controller
+        public final static double kP = 0.1;
+        public final static double kI = 0.0;
+        public final static double kD = 0.0;
     }
     public final class IntakeConstants {
         // max RPM = Maximum allowed speed for the intake wheels;
