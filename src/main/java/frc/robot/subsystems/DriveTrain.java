@@ -4,11 +4,14 @@
 
 package frc.robot.subsystems;
 
+import com.kauailabs.navx.frc.AHRS;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
+import edu.wpi.first.math.kinematics.DifferentialDriveOdometry;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.CounterBase.EncodingType;
+import edu.wpi.first.wpilibj.SPI.Port;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -25,6 +28,9 @@ public class DriveTrain extends SubsystemBase {
   private MotorControllerGroup m_rightMotors;
   private DifferentialDrive m_diffdrv;
   private Encoder m_leftEnc, m_rightEnc;
+  private AHRS m_gyro;
+  private DifferentialDriveOdometry m_odometry;
+
   /** Creates a new DriveSubsystem. */
   public DriveTrain() {
     m_left1.restoreFactoryDefaults();
@@ -37,6 +43,7 @@ public class DriveTrain extends SubsystemBase {
 
     m_diffdrv = new DifferentialDrive(m_leftMotors, m_rightMotors);
 
+    // Initialize Encoders
     m_leftEnc = new Encoder(EncoderConstants.leftEnc_ports[0], EncoderConstants.leftEnc_ports[1], 
                       EncoderConstants.leftEnc_reversed, EncodingType.k4X);
     m_rightEnc = new Encoder(EncoderConstants.rightEnc_ports[0], EncoderConstants.rightEnc_ports[1],
@@ -46,6 +53,12 @@ public class DriveTrain extends SubsystemBase {
     m_rightEnc.setDistancePerPulse(DriveTrainConstants.wheelDiameter * Math.PI / (EncoderConstants.revThroughboreEnc_PPR * 4));
 
     resetEncoders();
+
+    // Initialize Gyro
+    m_gyro = new AHRS(Port.kMXP);
+
+    // Initialize the Odometry object
+    m_odometry = new DifferentialDriveOdometry(m_gyro.getRotation2d());
   }
 
   @Override
