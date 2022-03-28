@@ -29,10 +29,9 @@ public final class Constants {
         public final static int climber2_ID = 32;
     }
     public final static class EncoderPorts {
-        public final static int[] leftEnc = new int[]{0, 1};
-        public final static int[] rightEnc = new int[]{2, 3};
-        public final static int[] intakeArmEnc = new int[]{4,5};
-        public final static int[] launcherEnc = new int[]{6,7};
+        public final static int[] leftEnc = new int[]{2, 3};
+        public final static int[] rightEnc = new int[]{4,5};
+        public final static int[] intakeArmEnc = new int[]{6,7};
         public final static int[] climberEnc = new int[]{8,9};
     }
     public final class IntakeConstants {
@@ -42,7 +41,9 @@ public final class Constants {
         public final static double wheelMaxSpeedDegPerSec = wheelMaxSpeedRPM * 360 / 60;
         // The intake wheels will accelerate from 0 to max speed in one second
         public final static double wheelMaxAccelDPS2 = wheelMaxSpeedDegPerSec;
-        // PID constants.  These values have to be eventually determined using the SysID tool
+        // Closed loop velocity PID constants for SparkMax.  
+        // These values are copied from the RevRobotics' SparkMax 
+        // closed loop velocity example
         // For now, we will use the some random values.
         public final static double wheelKp = 1.3;
         public final static double wheelKi = 0.0;
@@ -56,9 +57,16 @@ public final class Constants {
 
     public final class LauncherConstants {
         public final static double launcherMotorSpeed = 0.9;
-        public final static double kS = 1.0;
-        public final static double kV = 0.5;
-        public final static double kA = 0.0;
+        // The following constants are taken from the RevRobotics example
+        // https://github.com/REVrobotics/SPARK-MAX-Examples/blob/master/Java/Velocity%20Closed%20Loop%20Control/src/main/java/frc/robot/Robot.java
+        public final static double kP = 6e-5; 
+        public final static double kI = 0;
+        public final static double kD = 0; 
+        public final static double kIz = 0;
+        public final static double kFF = 0.000015; 
+        public final static double kMaxOutput = 1; 
+        public final static double kMinOutput = -1;
+        public final static double maxRPM = 5700;    
     }
 
     public final class OIConstants {
