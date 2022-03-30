@@ -8,6 +8,7 @@ package frc.robot.subsystems;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
 import com.revrobotics.SparkMaxPIDController;
+import com.revrobotics.CANSparkMax.ControlType;
 import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
@@ -38,7 +39,7 @@ public class Launcher extends SubsystemBase {
      */
     m_pidController = m_launcher1.getPIDController();
 
-    // Encoder object created to display position values
+    // Encoder object created to display velocity values
     m_encoder = m_launcher1.getEncoder();
 
     // set PID coefficients
@@ -57,6 +58,7 @@ public class Launcher extends SubsystemBase {
   public void periodic() {
     // This method will be called once per scheduler run
     m_setpointRPM = SmartDashboard.getNumber("Launcher target RPM", m_setpointRPM);
+    SmartDashboard.putNumber("Current RPM", m_encoder.getVelocity());
   }
 
   @Override
@@ -65,8 +67,9 @@ public class Launcher extends SubsystemBase {
   }
 
   public void launch() {
-    System.out.print("in Launcher.launch\n");
-    m_launcher1.set(LauncherConstants.launcherMotorSpeed);
+    // System.out.print("in Launcher.launch\n");
+    // m_launcher1.set(LauncherConstants.launcherMotorSpeed);
+    m_pidController.setReference(m_setpointRPM, ControlType.kVelocity);
   }
 
   public void unclogLauncher() {

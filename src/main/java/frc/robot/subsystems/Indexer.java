@@ -21,6 +21,9 @@ public class Indexer extends SubsystemBase {
     m_indexerBack.restoreFactoryDefaults();
     m_indexerFront.setIdleMode(IdleMode.kBrake);
     m_indexerBack.setIdleMode(IdleMode.kBrake);
+    // ToDo:  Check if the smart current limit is too low
+    m_indexerFront.setSmartCurrentLimit(30);
+    m_indexerBack.setSmartCurrentLimit(30);
     m_indexerBack.follow(m_indexerFront, true);
   }
 

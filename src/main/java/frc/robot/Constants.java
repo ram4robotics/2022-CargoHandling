@@ -44,10 +44,17 @@ public final class Constants {
         // Closed loop velocity PID constants for SparkMax.  
         // These values are copied from the RevRobotics' SparkMax 
         // closed loop velocity example
-        // For now, we will use the some random values.
-        public final static double wheelKp = 1.3;
-        public final static double wheelKi = 0.0;
-        public final static double wheelKd = 0.0;
+        // The following constants are taken from the RevRobotics example
+        // https://github.com/REVrobotics/SPARK-MAX-Examples/blob/master/Java/Velocity%20Closed%20Loop%20Control/src/main/java/frc/robot/Robot.java
+        public final static double wheelkP = 6e-5; 
+        public final static double wheelkI = 0;
+        public final static double wheelkD = 0; 
+        public final static double wheelkIz = 0;
+        public final static double wheelkFF = 0.000015; 
+        public final static double kMaxOutput = 1; 
+        public final static double kMinOutput = -1;
+        public final static double maxRPM = 5700;    
+
         public final static double wheelMotorSpeed = 0.6;
         public final static double armMotorSpeed = 0.8;
     }
