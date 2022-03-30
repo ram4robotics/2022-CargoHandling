@@ -22,7 +22,7 @@ public class Launcher extends SubsystemBase {
   private CANSparkMax m_launcher2 = new CANSparkMax(CAN_IDs.launcher2_ID, MotorType.kBrushless);
   private SparkMaxPIDController m_pidController;
   private RelativeEncoder m_encoder;
-  private double m_setpointRPM = 4000;
+  private double m_setpointRPM = LauncherConstants.desiredRPM;
 
   /** Creates a new Launcher. */
   public Launcher() {

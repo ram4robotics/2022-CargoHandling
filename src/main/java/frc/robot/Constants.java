@@ -53,6 +53,7 @@ public final class Constants {
         public final static double wheelkFF = 0.000015; 
         public final static double kMaxOutput = 1; 
         public final static double kMinOutput = -1;
+        public final static double desiredRPM = 3000;
         public final static double maxRPM = 5700;    
 
         public final static double wheelMotorSpeed = 0.6;
@@ -60,6 +61,17 @@ public final class Constants {
     }
     public final class IndexerConstants {
         public final static double indexerMotorSpeed = 0.5;
+        // The following constants are taken from the RevRobotics example
+        // https://github.com/REVrobotics/SPARK-MAX-Examples/blob/master/Java/Velocity%20Closed%20Loop%20Control/src/main/java/frc/robot/Robot.java
+        public final static double kP = 6e-5; 
+        public final static double kI = 0;
+        public final static double kD = 0; 
+        public final static double kIz = 0;
+        public final static double kFF = 0.000015; 
+        public final static double kMaxOutput = 1; 
+        public final static double kMinOutput = -1;
+        public final static double desiredRPM = 8000;
+        public final static double maxRPM = 11000;    
     }
 
     public final class LauncherConstants {
@@ -73,6 +85,7 @@ public final class Constants {
         public final static double kFF = 0.000015; 
         public final static double kMaxOutput = 1; 
         public final static double kMinOutput = -1;
+        public final static double desiredRPM = 4000;
         public final static double maxRPM = 5700;    
     }
 
