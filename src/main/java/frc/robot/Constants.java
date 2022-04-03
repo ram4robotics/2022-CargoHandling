@@ -4,8 +4,7 @@
 
 package frc.robot;
 
-import java.util.PrimitiveIterator.OfDouble;
-
+import edu.wpi.first.math.kinematics.DifferentialDriveKinematics;
 import edu.wpi.first.math.util.Units;
 
 /**
@@ -31,11 +30,38 @@ public final class Constants {
         public final static int climber1_ID = 31;
         public final static int climber2_ID = 32;
     }
-    public final static class EncoderPorts {
-        public final static int[] leftEnc = new int[]{2, 3};
-        public final static int[] rightEnc = new int[]{4,5};
-        public final static int[] intakeArmEnc = new int[]{6,7};
-        public final static int[] climberEnc = new int[]{8,9};
+    public final static class EncoderConstants {
+        public final static int[] leftEnc_ports = new int[]{0, 1};
+        public final static boolean leftEnc_reversed = false;
+        public final static int[] rightEnc_ports = new int[]{2, 3};
+        public final static boolean rightEnc_reversed = true;
+        public final static int[] intakeArmEnc_ports = new int[]{4,5};
+        public final static boolean intakeArmEnc_reversed = false;
+        public final static int[] climberEnc_ports = new int[]{6,7};
+        public final static boolean climberEnc_reversed = false;
+        public final static double revThroughboreEnc_PPR = 2048;
+    }
+    public final static class DriveTrainConstants {
+        public final static double gearRatio = 10.71;
+        public final static double wheelDiameter = Units.inchesToMeters(6);
+        // ToDo: trackWidth in meters; to be calculated with sysID tool
+        public final static double trackWidth = Units.inchesToMeters(22);
+        public static final DifferentialDriveKinematics kDriveKinematics =
+            new DifferentialDriveKinematics(trackWidth);
+        // ToDo: These are example values only - DO NOT USE THESE FOR YOUR OWN ROBOT!
+        // These characterization values MUST be determined either experimentally or theoretically
+        // for *your* robot's drive.
+        // The Robot Characterization Toolsuite provides a convenient tool for obtaining these
+        // values for your robot.
+        public static final double ksVolts = 0.22;
+        public static final double kvVoltSecondsPerMeter = 1.98;
+        public static final double kaVoltSecondsSquaredPerMeter = 0.2;
+
+        // ToDo: Determine the Feedback constants from sysID tool
+        //  These are the values for the SparkMax motor controller
+        public static final double kPDriveVel = 8.5;
+        public final static double kIDriveVel = 0.0;
+        public final static double kDDriveVel = 0.0;
     }
     public final class IntakeWheelConstants {
         // max RPM = Maximum allowed speed for the intake wheels;
