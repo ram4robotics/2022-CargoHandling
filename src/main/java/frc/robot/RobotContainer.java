@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Constants.OIConstants;
 import frc.robot.subsystems.Indexer;
-import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.IntakeWheels;
 import frc.robot.subsystems.Launcher;
 
 /**
@@ -24,7 +24,7 @@ import frc.robot.subsystems.Launcher;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  private final Intake m_intake = new Intake();
+  private final IntakeWheels m_intake = new IntakeWheels();
   private final Indexer m_indexer = new Indexer();
   private final Launcher m_launcher = new Launcher();
 
