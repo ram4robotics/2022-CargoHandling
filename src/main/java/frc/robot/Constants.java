@@ -31,23 +31,24 @@ public final class Constants {
         public final static int climber2_ID = 32;
     }
     public final static class EncoderConstants {
-        public final static int[] leftEnc_ports = new int[]{0, 1};
+        public final static int[] leftEnc_ports = new int[]{2, 3};
         public final static boolean leftEnc_reversed = false;
-        public final static int[] rightEnc_ports = new int[]{2, 3};
+        public final static int[] rightEnc_ports = new int[]{4, 5};
         public final static boolean rightEnc_reversed = true;
-        public final static int[] intakeArmEnc_ports = new int[]{4,5};
+        public final static int[] intakeArmEnc_ports = new int[]{6,7};
         public final static boolean intakeArmEnc_reversed = false;
-        public final static int[] climberEnc_ports = new int[]{6,7};
+        public final static int[] climberEnc_ports = new int[]{8,9};
         public final static boolean climberEnc_reversed = false;
         public final static double revThroughboreEnc_PPR = 2048;
     }
     public final static class DriveTrainConstants {
-        public final static double gearRatio = 10.71;
-        public final static double wheelDiameter = Units.inchesToMeters(6);
+        private final static double _gearRatio = 10.71;
+        private final static double _wheelDiameter_m = Units.inchesToMeters(6);
+        public final static double kWheelCircumference_m = Math.PI * _wheelDiameter_m;
         // ToDo: trackWidth in meters; to be calculated with sysID tool
-        public final static double trackWidth = Units.inchesToMeters(22);
+        private final static double _trackWidth = Units.inchesToMeters(22);
         public static final DifferentialDriveKinematics kDriveKinematics =
-            new DifferentialDriveKinematics(trackWidth);
+            new DifferentialDriveKinematics(_trackWidth);
         // ToDo: These are example values only - DO NOT USE THESE FOR YOUR OWN ROBOT!
         // These characterization values MUST be determined either experimentally or theoretically
         // for *your* robot's drive.
@@ -62,6 +63,14 @@ public final class Constants {
         public static final double kPDriveVel = 8.5;
         public final static double kIDriveVel = 0.0;
         public final static double kDDriveVel = 0.0;
+
+        public final static double kMaxSpeed_m_s = 3.0; // Max velocity 3 meters per second
+        public final static double kMaxAccel_m_ss = 3.0; // Max acceleration 3 m/s^2
+    }
+    public static final class AutoConstants {
+        // Reasonable baseline values for a RAMSETE follower in units of meters and seconds
+        public static final double kRamseteB = 2;
+        public static final double kRamseteZeta = 0.7;
     }
     public final class IntakeWheelConstants {
         // max RPM = Maximum allowed speed for the intake wheels;
